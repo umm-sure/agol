@@ -44,15 +44,34 @@
         latitude: 30.263098
       };
 
-      const simpleMarkerSymbol = {  
-        type: "simple-marker",  
-        style: "square",
-        color: [0, 199, 139],  // Color of blues rock
-        outline: {  
-          color: [0, 0, 0], // White  
-          width: 1
-        }  
+    const simpleMarkerSymbol = {  
+      type: "simple-marker",  
+      style: "square",
+      color: [0, 199, 139],  // Color of blues rock
+      outline: {  
+        color: [0, 0, 0], // White  
+        width: 1
+      }  
+    };
+
+    const polyline = {
+        type: "polyline", // autocasts as new Polyline()
+        paths: [[-111.3, 52.68], [-98, 49.5], [-93.94, 29.89]]
       };
+    });
+
+    const lineAtt = {
+        Name: "Keystone Pipeline", // The name of the pipeline
+        Owner: "TransCanada", // The owner of the pipeline
+        Length: "3,456 km" // The length of the pipeline
+      };
+    });
+
+    const polyline = {
+        type: "polyline", // autocasts as new Polyline()
+        paths: [[-111.3, 52.68], [-98, 49.5], [-93.94, 29.89]]
+      };
+    });
 
       const popupTemplate = {
           title: "{Name}",
@@ -71,7 +90,13 @@
         attributes: attributes,
         popupTemplate: popupTemplate
       });
+    const polylineGraphic = new Graphic({
+      geometry: polyline, // Add the geometry created in step 3
+      symbol: lineSymbol, // Add the symbol created in step 4
+      attributes: lineAtt // Add the attributes created in step 5
+    });
       graphicsLayer.add(pointGraphic);
+      graphicsLayer.add(polylineGraphic);
     });
   </script>
 
