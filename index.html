@@ -16,8 +16,12 @@
     require([
      "esri/config",
       "esri/Map",
-      "esri/views/MapView"
-    ], function (esriConfig,Map, MapView) {
+      "esri/views/MapView".
+
+      //graphs
+      "esri/Graphic",
+      "esri/layers/GraphicsLayer"
+    ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer) {
 
       esriConfig.apiKey = "AAPK22e4ec34fd14421696e81cb44e3f740bq_B9x_-ncR2mCNbS5aJ79C1YtB1mLlY3p6SmzQokYXrnWWonbLTSnaTCoxgUFig2";
       const map = new Map({
@@ -30,6 +34,44 @@
           zoom: 13, // Zoom level
           container: "viewDiv" // Div element
         });
+
+      const graphicsLayer = new GraphicsLayer();
+      map.add(graphicsLayer);
+
+      const point = { //Create a point  
+        type: "point",  
+        longitude: -97.750689,    //long lat of Stevie Ray Vaughan Statue
+        latitude: 30.263098
+      };
+
+      const simpleMarkerSymbol = {  
+        type: "simple-marker",  
+        style: "square",
+        color: [0, 199, 139],  // Color of blues rock
+        outline: {  
+          color: [0, 0, 0], // White  
+          width: 1
+        }  
+      };
+
+      const popupTemplate = {
+          title: "{Name}",
+          content: "{Description}"
+       }
+       const attributes = {
+          Name: "Stevie Ray Vaughan Statue",
+          Description: "A bronze sculpture of Stevie Ray Vaughan by Ralph Helmick"
+       }
+
+      const pointGraphic = new Graphic({  
+        geometry: point,  
+        symbol: simpleMarkerSymbol,
+
+        //popup
+        attributes: attributes,
+        popupTemplate: popupTemplate
+      });
+      graphicsLayer.add(pointGraphic);
     });
   </script>
 
