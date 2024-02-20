@@ -94,6 +94,12 @@
     //adding the feature layer to the map
     map.add(usaeduLayer);
 
+    const airLayer = new FeatureLayer({
+      url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports_HV/FeatureServer"
+    });
+
+    map.add(airLayer);
+
     });
 
 
