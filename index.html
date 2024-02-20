@@ -41,11 +41,6 @@
       const graphicsLayer = new GraphicsLayer();
       map.add(graphicsLayer);
 
-      const usaeduLayer = new FeatureLayer({
-      url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer" //get URL from AGOL Item Page
-      });
-      map.add(usaeduLayer);
-
       const point = { //Create a point  
         type: "point",  
         longitude: -97.750689,    //long lat of Stevie Ray Vaughan Statue
@@ -80,6 +75,25 @@
     });
 
     graphicsLayer.add(pointGraphic);
+
+    // Define a pop-up for usaeduLayer
+    const popupEduusa = {
+      "title": "EDUs",
+      "content": "<b>Name:</b> {IALIAS}<br><b>Total Enrollment:</b> {TOT_ENROLL}<br>"
+    }
+
+    //adding the Const for the feature layer
+    const usaeduLayer = new FeatureLayer({
+    url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer",
+
+    //adding the popup here
+    outFields: ["IALIAS","INSTSIZE"],
+    popupTemplate: popupEduusa
+    });
+
+    //adding the feature layer to the map
+    map.add(usaeduLayer);
+
     });
 
 
