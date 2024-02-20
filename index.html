@@ -79,7 +79,7 @@
     // Define a pop-up for usaeduLayer
     const popupEduusa = {
       "title": "EDUs",
-      "content": "<b>Name:</b> {IALIAS}<br><b>Total Enrollment:</b> {INSTSIZE}<br>"
+      "content": "<b>Name:</b> {IALIAS}<br><b>Total Enrollment:</b> {INSTSIZE}<br><b><a href={WEBADDR}>Website</a></b><br>"
     }
 
     //adding the Const for the feature layer
@@ -87,7 +87,7 @@
     url: "https://services2.arcgis.com/FiaPA4ga0iQKduv3/arcgis/rest/services/Colleges_and_Universities_View/FeatureServer",
 
     //adding the popup here
-    outFields: ["IALIAS","INSTSIZE"],
+    outFields: ["IALIAS","INSTSIZE","WEBADDR"],
     popupTemplate: popupEduusa
     });
 
@@ -117,7 +117,7 @@
       const airportLabels = {
         symbol: {
           type: "text",
-          color: "#00EFFF",
+          color: "#00FFF",
           haloColor: "#5E8D74",
           haloSize: "2px",
           font: {
