@@ -104,6 +104,16 @@
         }
       }
 
+      const heliRenderer = {
+        "type": "simple",
+        "symbol": {
+          "type": "picture-marker",
+          "url": "https://umm-sure.github.io/agol/outline_emergency_black_24dp.png",
+          "width": "18px",
+          "height": "18px"
+        }
+      }
+
       const airportLabels = {
         symbol: {
           type: "text",
@@ -130,7 +140,15 @@
       labelingInfo: [airportLabels]
     });
 
+    const heliLayer = new FeatureLayer({
+      url: "https://services.arcgis.com/LBbVDC0hKPAnLRpO/arcgis/rest/services/US_Airports/FeatureServer",
+      renderer: heliRenderer,
+      definitionExpression: "Fac_Type = 'HELIPORT'",
+      labelingInfo: [airportLabels]
+    })
+
     map.add(airLayer);
+    map.add(heliLayer);
 
     });
 
