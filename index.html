@@ -54,18 +54,6 @@
       }  
     };
 
-    const lineAtt = {
-        Name: "Keystone Pipeline", // The name of the pipeline
-        Owner: "TransCanada", // The owner of the pipeline
-        Length: "3,456 km" // The length of the pipeline
-      };
-
-    const polyline = {
-        type: "polyline", // autocasts as new Polyline()
-        paths: [[-111.3, 52.68], [-98, 49.5], [-93.94, 29.89]]
-      };
-
-
       const popupTemplate = {
           title: "{Name}",
           content: "{Description}"
@@ -84,14 +72,7 @@
         popupTemplate: popupTemplate
       });
 
-    const polylineGraphic = new Graphic({
-      geometry: polyline, // Add the geometry created in step 3
-      symbol: lineSymbol, // Add the symbol created in step 4
-      attributes: lineAtt // Add the attributes created in step 5
-    });
-
     view.graphicsLayer.add(pointGraphic);
-    view.graphicsLayer.add(polylineGraphic);
 
     });
 
