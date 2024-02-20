@@ -20,8 +20,11 @@
 
       //graphs
       "esri/Graphic",
-      "esri/layers/GraphicsLayer"
-    ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer) {
+      "esri/layers/GraphicsLayer",  
+
+      //adding in the module for the feature layers
+      "esri/layers/FeatureLayer"
+    ], function (esriConfig,Map, MapView, Graphic, GraphicsLayer, FeatureLayer) {
 
       esriConfig.apiKey = "AAPK22e4ec34fd14421696e81cb44e3f740bq_B9x_-ncR2mCNbS5aJ79C1YtB1mLlY3p6SmzQokYXrnWWonbLTSnaTCoxgUFig2";
       const map = new Map({
@@ -37,6 +40,11 @@
 
       const graphicsLayer = new GraphicsLayer();
       map.add(graphicsLayer);
+
+      const usaeduLayer = new FeatureLayer({
+      url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/Citizen_Voting_Age_Population_CVAP_Congressional_and_Legislative_Districts/FeatureServer" //get URL from AGOL Item Page
+      });
+      map.add(usaeduLayer);
 
       const point = { //Create a point  
         type: "point",  
