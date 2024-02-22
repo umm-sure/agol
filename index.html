@@ -224,11 +224,15 @@
     map.add(airLayer);
     map.add(heliLayer);
 
+    /*
     graphicsLayer.add(polygonGraphic);
       view.GraphicsLayer.add(polygonGraphic);
 
       graphicsLayer.add(polylineGraphic);
       view.GraphicsLayer.add(polylineGraphic);
+      */
+
+      view.GraphicsLayer.addMany([polylineGraphic, polygonGraphic]);
     });
 
 
