@@ -109,9 +109,6 @@
       }  
     };
 
-    graphicsLayer.add(polylineGraphic);
-    view.GraphicsLayer.add(polylineGraphic);
-
     const popupTemplate = {
         title: "{Name}",
         content: "{Description}"
@@ -227,6 +224,9 @@
       });
 
       map.add(polygon);
+
+      graphicsLayer.add(polylineGraphic);
+      view.GraphicsLayer.add(polylineGraphic);
     });
 
 
